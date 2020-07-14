@@ -24,6 +24,11 @@ public class CBRPQrEyesRenderer implements QrEyesRenderer {
 		final String[] directions = { "topLeft", "topRight", "bottomLeft" };
 		
 		Graphics2D graphics = image.createGraphics();
+		// 设置透明背景开始
+//		image = graphics.getDeviceConfiguration().createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+//		graphics.dispose();
+//		graphics = image.createGraphics();
+		// 设置透明背景代码结束
 		graphics.setBackground(slave);
 		for (String direction : directions) {
 

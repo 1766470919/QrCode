@@ -215,8 +215,7 @@ public class SimpleQrCodeGenerator extends AbstractGenerator implements QrCodeGe
         int width = bitMatrix.getWidth(), height = bitMatrix.getHeight();
 
         /**
-         * Formula for calculating number of modules on each side:
-         * (Version - 1) * 4 + 21.
+         * 矩阵块公式是：(V-1)*4 + 21（V是版本号）
          */
         int modules = (version.getVersionNumber() - 1) * 4 + 21;
         int[] topLeftOnBit = bitMatrix.getTopLeftOnBit();
@@ -237,7 +236,7 @@ public class SimpleQrCodeGenerator extends AbstractGenerator implements QrCodeGe
         int bottomEndY = height - topLeftOnBit[1] - moduleHeight * QreyesRenderStrategy.POINT_BORDER.getStart();
 
         // 构图
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
         // custom color.
         int masterColor = getColor(config.getMasterColor()).getRGB();

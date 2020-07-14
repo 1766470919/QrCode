@@ -6,9 +6,9 @@ public final class Codectx implements Serializable {
 
     private static final long serialVersionUID = 7876385594107646257L;
 
-    public static final Integer DEFAULT_CODE_WIDTH = 250;                        // 默认宽度
-    public static final Integer DEFAULT_CODE_HEIGHT = 250;                       // 默认高度
-    public static final Integer DEFAULT_CODE_MARGIN = 10;                        // 默认外边距
+    public static final Integer DEFAULT_CODE_WIDTH = 200;                        // 默认宽度
+    public static final Integer DEFAULT_CODE_HEIGHT = 200;                       // 默认高度
+    public static final Integer DEFAULT_CODE_MARGIN = 0;                         // 默认外边距
     public static final Integer DEFAULT_CODE_PADDING = 0;                        // 默认内边距
     public static final Integer DEFAULT_CODE_BORDER_SIZE = 0;                    // 默认边框大小
     public static final Integer DEFAULT_CODE_BORDER_RADIUS = 0;                  // 默认边框圆角
@@ -24,8 +24,11 @@ public final class Codectx implements Serializable {
     public static final Integer DEFAULT_LOGO_ARCWIDTH = 10;                      // 默认logo弧度
     public static final Integer DEFAULT_LOGO_PANEL_RADIUS = 15;                  // 默认logo圆角
     public static final String  DEFAULT_LOGO_BORDER_COLOR = "#808080";           // 默认log边框颜色
-    public static final String  DEFAULT_LOGO_BACKGROUND_COLOR = "#FFFFFF";       // 默认logo背景色
+    public static final String  DEFAULT_LOGO_BACKGROUND_COLOR = "#808080";       // 默认logo背景色
     public static final String  DEFAULT_LOGO_PANEL_COLOR = "#FFFFFF";            // 默认logo面板色
+
+    public static final String  DEFAULT_CODE_EYE_BORDER_COLOR = "#000000";            // 默认码眼颜色
+    public static final String  DEFAULT_CODE_EYE_POINT_COLOR = "#000000";            // 默认码眼颜色
 
     public static final String IMAGE_TYPE = "png";
 

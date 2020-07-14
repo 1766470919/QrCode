@@ -64,7 +64,7 @@ public class QrCodeConfig extends GenericCodeConfig {
 
     public QrCodeConfig setMargin(int margin) {
         this.margin = margin;
-        addHint(EncodeHintType.MARGIN, padding);
+        addHint(EncodeHintType.MARGIN, this.margin);
         return this;
     }
 

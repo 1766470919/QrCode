@@ -14,7 +14,7 @@ import java.util.Map;
 
 public final class QrCodeWriter implements Writer {
 
-	private static final int QUIET_ZONE_SIZE = 5;
+	private static final int QUIET_ZONE_SIZE = 4;
 
 	@Override
 	public BitMatrix encode(String contents, BarcodeFormat format, int width, int height) throws WriterException {
@@ -68,8 +68,8 @@ public final class QrCodeWriter implements Writer {
 		if (width < 0 || height < 0) {
 			throw new IllegalArgumentException("Requested dimensions are too small: " + width + 'x' + height);
 		}
-		// 默认容错码率为H
-		ErrorCorrectionLevel errorCorrectionLevel = ErrorCorrectionLevel.H;
+		// 默认容错码率为L
+		ErrorCorrectionLevel errorCorrectionLevel = ErrorCorrectionLevel.L;
 		int quietZone = QUIET_ZONE_SIZE;
 		if (hints != null) {
 			if (hints.containsKey(EncodeHintType.ERROR_CORRECTION)) {
@@ -80,6 +80,10 @@ public final class QrCodeWriter implements Writer {
 				quietZone = Integer.parseInt(hints.get(EncodeHintType.MARGIN).toString());
 			}
 		}
+
+		// 设置取值区间0~10
+		quietZone = Math.min(quietZone, 10);
+		quietZone = Math.max(quietZone, 0);
 
 		QRCode code = Encoder.encode(contents, errorCorrectionLevel, hints);
 		BitMatrix bitMatrix = renderResult(code, width, height, quietZone);
