@@ -1,8 +1,16 @@
 package xyz.symhx.normal.entity;
 
+import com.google.zxing.qrcode.encoder.ByteMatrix;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import xyz.symhx.normal.tools.GraphicUtil;
+import xyz.symhx.normal.tools.ImageOperateUtil;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 
 /**
  * 二维码渲染辅助类，主要用于绘制背景，logo，定位点，二维码信息
@@ -568,7 +576,6 @@ public class QrCodeRenderHelper {
         }
 
         List<DotSize> container = new ArrayList<>();
-
         int col = 1;
         int lastRow = maxRow;
         while (col < maxCol) {

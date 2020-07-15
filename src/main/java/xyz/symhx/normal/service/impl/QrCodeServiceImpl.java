@@ -43,4 +43,9 @@ public class QrCodeServiceImpl implements IQrCodeService {
         }
         return generator.generate(qrCodeInfo.getContent()).getImage();
     }
+
+    public BufferedImage code() {
+
+        return null;
+    }
 }

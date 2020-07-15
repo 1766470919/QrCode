@@ -4,8 +4,16 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
+import com.google.zxing.qrcode.encoder.Encoder;
 import com.google.zxing.qrcode.encoder.QRCode;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 二维码生成辅助类，主要两个方法，一个是生成二维码矩阵，一个是渲染矩阵为图片
@@ -73,9 +81,9 @@ public class QrCodeGenerateHelper {
         int minSize = Math.min(width, height);
         int scale = calculateScale(qrWidth, minSize);
         if (scale > 0) {
-            if (log.isDebugEnabled()) {
-                log.debug("qrCode scale enable! scale: {}, qrSize:{}, expectSize:{}x{}", scale, qrWidth, width, height);
-            }
+//            if (log.isDebugEnabled()) {
+//                log.debug("qrCode scale enable! scale: {}, qrSize:{}, expectSize:{}x{}", scale, qrWidth, width, height);
+//            }
 
             int padding, tmpValue;
             // 计算边框留白
@@ -190,7 +198,7 @@ public class QrCodeGenerateHelper {
 
 
     public static List<ImmutablePair<BufferedImage, Integer>> toGifImages(QrCodeOptions qrCodeConfig,
-            BitMatrixEx bitMatrix) {
+                                                                          BitMatrixEx bitMatrix) {
         if (qrCodeConfig.getBgImgOptions() == null ||
                 qrCodeConfig.getBgImgOptions().getGifDecoder().getFrameCount() <= 0) {
             throw new IllegalArgumentException("animated background image should not be null!");
@@ -221,7 +229,7 @@ public class QrCodeGenerateHelper {
 
 
         // 绘制动态背景图
-        List<ImmutablePair<BufferedImage, Integer>> bgList =
+        java.util.List<ImmutablePair<BufferedImage, Integer>> bgList =
                 QrCodeRenderHelper.drawGifBackground(qrCode, qrCodeConfig.getBgImgOptions());
 
         // 插入logo

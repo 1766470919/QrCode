@@ -1,12 +1,5 @@
 package xyz.symhx.normal.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class DotSize {
     public static final DotSize SIZE_1_1 = new DotSize(1, 1);
     public static final DotSize SIZE_2_1 = new DotSize(2, 1);
@@ -32,5 +25,29 @@ public class DotSize {
         } else {
             return new DotSize(row, col);
         }
+    }
+
+    public DotSize() {
+    }
+
+    public DotSize(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
     }
 }

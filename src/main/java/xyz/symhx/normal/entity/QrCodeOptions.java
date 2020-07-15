@@ -3,6 +3,7 @@ package xyz.symhx.normal.entity;
 import com.google.zxing.EncodeHintType;
 import lombok.Builder;
 import lombok.Data;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import xyz.symhx.normal.common.GifDecoder;
 
@@ -12,7 +13,6 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
-@Data
 public class QrCodeOptions {
     /**
      * 塞入二维码的信息
@@ -74,12 +74,82 @@ public class QrCodeOptions {
         return bgImgOptions != null && bgImgOptions.getGifDecoder() != null;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Integer getW() {
+        return w;
+    }
+
+    public void setW(Integer w) {
+        this.w = w;
+    }
+
+    public Integer getH() {
+        return h;
+    }
+
+    public void setH(Integer h) {
+        this.h = h;
+    }
+
+    public DrawOptions getDrawOptions() {
+        return drawOptions;
+    }
+
+    public void setDrawOptions(DrawOptions drawOptions) {
+        this.drawOptions = drawOptions;
+    }
+
+    public BgImgOptions getBgImgOptions() {
+        return bgImgOptions;
+    }
+
+    public void setBgImgOptions(BgImgOptions bgImgOptions) {
+        this.bgImgOptions = bgImgOptions;
+    }
+
+    public LogoOptions getLogoOptions() {
+        return logoOptions;
+    }
+
+    public void setLogoOptions(LogoOptions logoOptions) {
+        this.logoOptions = logoOptions;
+    }
+
+    public DetectOptions getDetectOptions() {
+        return detectOptions;
+    }
+
+    public void setDetectOptions(DetectOptions detectOptions) {
+        this.detectOptions = detectOptions;
+    }
+
+    public Map<EncodeHintType, Object> getHints() {
+        return hints;
+    }
+
+    public void setHints(Map<EncodeHintType, Object> hints) {
+        this.hints = hints;
+    }
+
+    public String getPicType() {
+        return picType;
+    }
+
+    public void setPicType(String picType) {
+        this.picType = picType;
+    }
 
     /**
      * logo 的配置信息
      */
     @Builder
-    @Data
     public static class LogoOptions {
 
         /**
@@ -117,6 +187,62 @@ public class QrCodeOptions {
          * 用于设置logo的透明度
          */
         private Float opacity;
+
+        public BufferedImage getLogo() {
+            return logo;
+        }
+
+        public void setLogo(BufferedImage logo) {
+            this.logo = logo;
+        }
+
+        public LogoStyle getLogoStyle() {
+            return logoStyle;
+        }
+
+        public void setLogoStyle(LogoStyle logoStyle) {
+            this.logoStyle = logoStyle;
+        }
+
+        public int getRate() {
+            return rate;
+        }
+
+        public void setRate(int rate) {
+            this.rate = rate;
+        }
+
+        public boolean isBorder() {
+            return border;
+        }
+
+        public void setBorder(boolean border) {
+            this.border = border;
+        }
+
+        public Color getBorderColor() {
+            return borderColor;
+        }
+
+        public void setBorderColor(Color borderColor) {
+            this.borderColor = borderColor;
+        }
+
+        public Color getOuterBorderColor() {
+            return outerBorderColor;
+        }
+
+        public void setOuterBorderColor(Color outerBorderColor) {
+            this.outerBorderColor = outerBorderColor;
+        }
+
+        public Float getOpacity() {
+            return opacity;
+        }
+
+        public void setOpacity(Float opacity) {
+            this.opacity = opacity;
+        }
     }
 
 
@@ -124,7 +250,6 @@ public class QrCodeOptions {
      * 背景图的配置信息
      */
     @Builder
-    @Data
     public static class BgImgOptions {
         /**
          * 背景图
@@ -195,6 +320,62 @@ public class QrCodeOptions {
             }
             return bgH;
         }
+
+        public BufferedImage getBgImg() {
+            return bgImg;
+        }
+
+        public void setBgImg(BufferedImage bgImg) {
+            this.bgImg = bgImg;
+        }
+
+        public GifDecoder getGifDecoder() {
+            return gifDecoder;
+        }
+
+        public void setGifDecoder(GifDecoder gifDecoder) {
+            this.gifDecoder = gifDecoder;
+        }
+
+        public void setBgW(int bgW) {
+            this.bgW = bgW;
+        }
+
+        public void setBgH(int bgH) {
+            this.bgH = bgH;
+        }
+
+        public BgImgStyle getBgImgStyle() {
+            return bgImgStyle;
+        }
+
+        public void setBgImgStyle(BgImgStyle bgImgStyle) {
+            this.bgImgStyle = bgImgStyle;
+        }
+
+        public float getOpacity() {
+            return opacity;
+        }
+
+        public void setOpacity(float opacity) {
+            this.opacity = opacity;
+        }
+
+        public int getStartX() {
+            return startX;
+        }
+
+        public void setStartX(int startX) {
+            this.startX = startX;
+        }
+
+        public int getStartY() {
+            return startY;
+        }
+
+        public void setStartY(int startY) {
+            this.startY = startY;
+        }
     }
 
 
@@ -202,7 +383,6 @@ public class QrCodeOptions {
      * 探测图形的配置信息
      */
     @Builder
-    @Data
     public static class DetectOptions {
         private Color outColor;
 
@@ -251,13 +431,63 @@ public class QrCodeOptions {
             }
         }
 
+        public Color getOutColor() {
+            return outColor;
+        }
+
+        public void setOutColor(Color outColor) {
+            this.outColor = outColor;
+        }
+
+        public Color getInColor() {
+            return inColor;
+        }
+
+        public void setInColor(Color inColor) {
+            this.inColor = inColor;
+        }
+
+        public BufferedImage getDetectImg() {
+            return detectImg;
+        }
+
+        public void setDetectImg(BufferedImage detectImg) {
+            this.detectImg = detectImg;
+        }
+
+        public BufferedImage getDetectImgLT() {
+            return detectImgLT;
+        }
+
+        public void setDetectImgLT(BufferedImage detectImgLT) {
+            this.detectImgLT = detectImgLT;
+        }
+
+        public BufferedImage getDetectImgRT() {
+            return detectImgRT;
+        }
+
+        public void setDetectImgRT(BufferedImage detectImgRT) {
+            this.detectImgRT = detectImgRT;
+        }
+
+        public BufferedImage getDetectImgLD() {
+            return detectImgLD;
+        }
+
+        public void setDetectImgLD(BufferedImage detectImgLD) {
+            this.detectImgLD = detectImgLD;
+        }
+
+        public void setSpecial(Boolean special) {
+            this.special = special;
+        }
     }
 
 
     /**
      * 绘制二维码的配置信息
      */
-    @Data
     public static class DrawOptions {
         /**
          * 着色颜色
@@ -319,6 +549,94 @@ public class QrCodeOptions {
          * 渲染图
          */
         private Map<DotSize, BufferedImage> imgMapper;
+
+        public Color getPreColor() {
+            return preColor;
+        }
+
+        public void setPreColor(Color preColor) {
+            this.preColor = preColor;
+        }
+
+        public Color getBgColor() {
+            return bgColor;
+        }
+
+        public void setBgColor(Color bgColor) {
+            this.bgColor = bgColor;
+        }
+
+        public BufferedImage getBgImg() {
+            return bgImg;
+        }
+
+        public void setBgImg(BufferedImage bgImg) {
+            this.bgImg = bgImg;
+        }
+
+        public DrawStyle getDrawStyle() {
+            return drawStyle;
+        }
+
+        public void setDrawStyle(DrawStyle drawStyle) {
+            this.drawStyle = drawStyle;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public String getFontName() {
+            return fontName;
+        }
+
+        public void setFontName(String fontName) {
+            this.fontName = fontName;
+        }
+
+        public TxtMode getTxtMode() {
+            return txtMode;
+        }
+
+        public void setTxtMode(TxtMode txtMode) {
+            this.txtMode = txtMode;
+        }
+
+        public int getFontStyle() {
+            return fontStyle;
+        }
+
+        public void setFontStyle(int fontStyle) {
+            this.fontStyle = fontStyle;
+        }
+
+        public boolean isEnableScale() {
+            return enableScale;
+        }
+
+        public void setEnableScale(boolean enableScale) {
+            this.enableScale = enableScale;
+        }
+
+        public boolean isDiaphaneityFill() {
+            return diaphaneityFill;
+        }
+
+        public void setDiaphaneityFill(boolean diaphaneityFill) {
+            this.diaphaneityFill = diaphaneityFill;
+        }
+
+        public Map<DotSize, BufferedImage> getImgMapper() {
+            return imgMapper;
+        }
+
+        public void setImgMapper(Map<DotSize, BufferedImage> imgMapper) {
+            this.imgMapper = imgMapper;
+        }
 
         public BufferedImage getImage(int row, int col) {
             return getImage(DotSize.create(row, col));
@@ -561,7 +879,7 @@ public class QrCodeOptions {
             public boolean expand(DotSize expandType) {
                 return false;
             }
-        }, DIAMOND { // 五边形-钻石
+        },DIAMOND { // 五边形-钻石
 
             @Override
             public void draw(Graphics2D g2d, int x, int y, int size, int h, BufferedImage img, String txt) {
